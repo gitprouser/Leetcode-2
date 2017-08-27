@@ -33,9 +33,11 @@ public class ShortestWordDistanceII {
 
     //ShortestWordDistanceII 这个题在leetcode中构造函数是 WordDistance
 
-    private HashMap<String, List<Integer>> map = new HashMap<>();
+    private HashMap<String, List<Integer>> map;
+
 
     public ShortestWordDistanceII(String[] words) {
+        map = new HashMap<>();
         for (int i = 0; i < words.length; i++) {
             if (map.containsKey(words[i])) {
                 map.get(words[i]).add(i);
@@ -71,7 +73,9 @@ public class ShortestWordDistanceII {
             res = Math.min(res, Math.abs(l1.get(i) - l2.get(j)));
             if (l1.get(i) < l2.get(j)) {
                 i++;
-            } else j++;
+            } else {
+                j++;
+            }
         }
         return res;
     }
