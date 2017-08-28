@@ -13,6 +13,7 @@ import java.util.Queue;
  */
 public class InvertBinaryTree {
     /**
+     * 226. Invert Binary Tree
      * Invert a binary tree.
 
           4
@@ -35,12 +36,12 @@ public class InvertBinaryTree {
      */
 
     public TreeNode invertTree(TreeNode root) {
-        if (root == null) return root;
-        TreeNode left = invertTree(root.left);
-        TreeNode right = invertTree(root.right);
-        root.left = right;
-        root.right = left;
-        return root;
+       if (root == null) return root;
+       TreeNode left = invertTree(root.left);
+       TreeNode right = invertTree(root.right);
+       root.left = right;
+       root.right = left;
+       return root;
     }
 
     public TreeNode invertTree2(TreeNode root) {
@@ -51,7 +52,7 @@ public class InvertBinaryTree {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = queue.poll();
-                TreeNode temp= cur.left;
+                TreeNode temp = cur.left;
                 cur.left = cur.right;
                 cur.right = temp;
                 if (cur.left != null) queue.offer(cur.left);
