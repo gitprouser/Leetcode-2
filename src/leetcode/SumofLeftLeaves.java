@@ -40,9 +40,7 @@ public class SumofLeftLeaves {
         if (root.left != null) {
             if (root.left.left == null && root.left.right == null) {
                 res += root.left.val;
-            } else {
-                res +=sumOfLeftLeaves(root.left);
-            }
+            } else res += sumOfLeftLeaves(root.left);
         }
         res += sumOfLeftLeaves(root.right);
         return res;
@@ -57,9 +55,7 @@ public class SumofLeftLeaves {
             if (cur.left != null) {
                 if (cur.left.left == null && cur.left.right == null) {
                     res += cur.left.val;
-                } else {
-                    queue.offer(cur.left);
-                }
+                } else queue.offer(cur.left);
             }
             if (cur.right != null) {
                 queue.offer(cur.right);
