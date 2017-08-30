@@ -11,6 +11,7 @@ import java.util.*;
  * Description : TODO
  */
 public class AAA {
+    // Encodes a tree to a single string.
 
 
     public static void main(String[] args) {

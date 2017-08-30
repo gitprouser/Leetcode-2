@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 /**
@@ -35,34 +36,38 @@ public class TwoSumIVInputisaBST {
 
     //time : O(n), space : O(n)
     public boolean findTarget(TreeNode root, int k) {
+        if (root == null) return false;
         HashSet<Integer> set = new HashSet<>();
-        return helper(root, set, k);
+        return helper(root, k, set);
     }
 
-    public boolean helper(TreeNode root, HashSet<Integer> set, int k) {
+    public boolean helper(TreeNode root, int k, HashSet<Integer> set) {
         if (root == null) return false;
         if (set.contains(k - root.val)) {
             return true;
         }
         set.add(root.val);
-        return helper(root.left, set, k) || helper(root.right, set, k);
+        return helper(root.left, k, set) || helper(root.right, k, set);
     }
 
     //time : O(nlogn) space : O(h)  h : logn ~ n
 
     public boolean findTarget2(TreeNode root, int k) {
-        return dfsFirstVal(root, root, k);
+        return firstDfs(root, root, k);
     }
 
-    public boolean dfsFirstVal(TreeNode first, TreeNode second, int k) {
-        if (second == null) return false;
-        return dfsSecondVal(first, second, k - second.val) || dfsFirstVal(first, second.left, k) || dfsFirstVal(first, second.right, k);
-    }
-    public boolean dfsSecondVal(TreeNode first, TreeNode second, int value) {
+    public boolean firstDfs(TreeNode first, TreeNode second, int k) {
         if (first == null) return false;
-        return (first.val == value) && (first != second)
-                || (first.val < value) && dfsSecondVal(first.right, second, value)
-                || (first.val > value) && dfsSecondVal(first.left, second, value);
+        return secondDfs(first, second, k - first.val)
+                || firstDfs(first.left, second, k)
+                || firstDfs(first.right, second, k);
+    }
+
+    public boolean secondDfs(TreeNode first, TreeNode second, int k) {
+        if (second == null) return false;
+        return (second.val == k) && (first != second)
+                || (second.val > k) && secondDfs(first, second.left, k)
+                || (second.val < k) && secondDfs(first, second.right, k);
     }
 
 }
