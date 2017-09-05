@@ -16,7 +16,10 @@ public class OddEvenLinkedList {
      Given 1->2->3->4->5->NULL,
      return 1->3->5->2->4->NULL.
 
-     1 -> 3 -> 5    2 -> 4
+     1 -> 3    2 -> 4
+
+     3 -> 4 -> 5 -> 6
+
 
      time : O(n);
      space : O(1);
@@ -32,7 +35,7 @@ public class OddEvenLinkedList {
             odd.next = odd.next.next;
             even.next = even.next.next;
             odd = odd.next;
-            even = evenHead.next;
+            even = even.next;
         }
         odd.next = evenHead;
         return head;

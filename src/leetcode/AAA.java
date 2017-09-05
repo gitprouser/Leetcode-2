@@ -11,20 +11,42 @@ import java.util.*;
  * Description : TODO
  */
 public class AAA {
-    // Encodes a tree to a single string.
-    public int res(int N, int K, int L) {
-        long res = 1, r = 1000000007;
-        for (int i = 0; i < K; i++) {
-            res *= (N - i);
-        }
-        res *= (long)Math.pow((N-K),(L-K));
-        res = res % r;
-        return (int)res;
-    }
 
+    private static ListNode findMiddle (ListNode head)
+    {
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    private static ListNode reverse(ListNode head)
+    {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode temp = head.next;
+            head.next = prev;
+            prev = head;
+            head = temp;
+        }
+        return prev;
+    }
     public static void main(String[] args) {
-        long r = 1;
-        int L = 3, N = 3, K= 3;
-        int res = (int)Math.pow((N-K),(L-K));
+
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(1);
+        head.next.next = new ListNode(2);
+        head.next.next.next = new ListNode(1);
+        ListNode p = head;
+        ListNode q = reverse(head);
+        while (q != null) {
+            //if(p.val!=q.val) System.out.println("dfd");
+            System.out.println(q.val);
+            q = q.next;
+        }
+
+        System.out.println("dfsafds");
     }
 }
