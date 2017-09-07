@@ -45,4 +45,11 @@ public class NestedInteger {
     public List<NestedInteger> getList() {
         return list;
     }
+
+    public Integer next() {
+        return value; // 例子，真正函数不是这么写的
+    }
+    public boolean hasNext() {
+        return true; // 例子，真正函数不是这么写的
+    }
 }

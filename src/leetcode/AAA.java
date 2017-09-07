@@ -12,41 +12,34 @@ import java.util.*;
  */
 public class AAA {
 
-    private static ListNode findMiddle (ListNode head)
-    {
-        ListNode slow = head;
-        ListNode fast = head.next;
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+    Stack<Integer> queue = new Stack<Integer>();
+    // Push element x to the back of queue.
+    public void push(int x) {
+        Stack<Integer> temp = new Stack<Integer>();
+        while(!queue.empty()){
+            temp.push(queue.pop());
         }
-        return slow;
+        queue.push(x);
+        while(!temp.empty()){
+            queue.push(temp.pop());
+        }
     }
-    private static ListNode reverse(ListNode head)
-    {
-        ListNode prev = null;
-        while (head != null) {
-            ListNode temp = head.next;
-            head.next = prev;
-            prev = head;
-            head = temp;
-        }
-        return prev;
+
+    // Removes the element from in front of queue.
+    public void pop() {
+        queue.pop();
+    }
+
+    // Get the front element.
+    public int peek() {
+        return queue.peek();
+    }
+
+    // Return whether the queue is empty.
+    public boolean empty() {
+        return queue.empty();
     }
     public static void main(String[] args) {
 
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(1);
-        head.next.next = new ListNode(2);
-        head.next.next.next = new ListNode(1);
-        ListNode p = head;
-        ListNode q = reverse(head);
-        while (q != null) {
-            //if(p.val!=q.val) System.out.println("dfd");
-            System.out.println(q.val);
-            q = q.next;
-        }
-
-        System.out.println("dfsafds");
     }
 }

@@ -26,6 +26,7 @@ public class NestedListWeightSum {
      Given the list [1,[4,[6]]], return 27.
      (one 1 at depth 1, one 4 at depth 2, and one 6 at depth 3; 1 + 4*2 + 6*3 = 27)
 
+
      time : O(n)
      space : O(n);
      * @param nestedList
@@ -33,6 +34,7 @@ public class NestedListWeightSum {
      */
 
 
+    // DFS
     public int depthSum(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;
         return helper(nestedList, 1);
@@ -50,6 +52,7 @@ public class NestedListWeightSum {
         return res;
     }
 
+    // BFS
     public int depthSum2(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;
         int depth = 1;
@@ -65,10 +68,10 @@ public class NestedListWeightSum {
                     queue.addAll(nest.getList());
                 }
             }
-            depth++;
         }
         return res;
     }
+
 
     public int depthSum3(List<NestedInteger> nestedList) {
         if (nestedList == null) return 0;
