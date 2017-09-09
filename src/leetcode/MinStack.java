@@ -1,6 +1,5 @@
 package leetcode;
 
-import javax.print.attribute.IntegerSyntax;
 import java.util.Stack;
 
 /**
@@ -33,15 +32,70 @@ public class MinStack {
      minStack.top();      --> Returns 0.
      minStack.getMin();   --> Returns -2.
 
-     stack : MAX -2 0
-     min : -2
+     在-128~127的Integer值并且以Integer x = value;的方式赋值的Integer值在进行==和equals比较时，都会返回true，
+     因为Java里面对处在在-128~127之间的Integer值，用的是原生数据类型int，会在内存里供重用，
+     也就是说这之间的Integer值进行==比较时只是进行int原生数据类型的数值比较，而超出-128~127的范围，进行==比较时是进行地址及数值比较
+
+     time : O(1)
+     space : O(n)
+     */
+
+    private Stack<Integer> stack;
+    private Stack<Integer> minStack;
+
+
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    public void push(int x) {
+        stack.push(x);
+        if (!minStack.isEmpty()) {
+            int min = minStack.peek();
+            if (x <= min) {
+                minStack.push(x);
+            }
+        } else {
+            minStack.push(x);
+        }
+    }
+
+    public void pop() {
+        int x = stack.pop();
+        if (!minStack.isEmpty()) {
+            if (x == minStack.peek()) {
+                minStack.pop();
+            }
+        }
+    }
+
+    public int top() {
+        return stack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+
+class MinStack2 {
+
+    /**
+     minStack.push(-2);
+     minStack.push(0);
+     minStack.push(-3);
+     minStack.getMin();   --> Returns -3.
+     minStack.pop();
+     minStack.top();      --> Returns 0.
+     minStack.getMin();   --> Returns -2.
 
      */
 
     Stack<Integer> stack;
-    Integer min;
+    int min;
 
-    public MinStack() {
+    public MinStack2() {
         stack = new Stack<>();
         min = Integer.MAX_VALUE;
     }
@@ -55,7 +109,9 @@ public class MinStack {
     }
 
     public void pop() {
-        if (stack.pop() == min) min = stack.pop();
+        if (stack.pop() == min) {
+            min = stack.pop();
+        }
     }
 
     public int top() {
@@ -66,3 +122,4 @@ public class MinStack {
         return min;
     }
 }
+

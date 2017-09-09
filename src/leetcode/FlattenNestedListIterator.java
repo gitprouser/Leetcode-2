@@ -16,13 +16,11 @@ public class FlattenNestedListIterator {
 
     }
 
-    @Override
     public Integer next() {
-
+        return 0;
     }
 
-    @Override
     public boolean hasNext() {
-
+        return true;
     }
 }
