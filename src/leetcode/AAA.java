@@ -11,10 +11,12 @@ import java.util.*;
  * Description : TODO
  */
 public class AAA {
+
+
     public static void main(String[] args) {
-        Integer s1 = 200;
-        Integer s2 = 200;
-        int s = 200;
-        System.out.println(s1.equals(s2));
+        int[] nums = new int[]{1,2,3,4,60};
+        Arrays.sort(nums);
+        System.out.println(nums[0] * nums[1] * nums[nums.length - 1]);
+        System.out.println(nums[nums.length - 1] * nums[nums.length - 2] * nums[nums.length - 3]);
     }
 }

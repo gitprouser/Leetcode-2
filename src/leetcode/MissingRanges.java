@@ -1,5 +1,6 @@
 package leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,6 @@ public class MissingRanges {
      * @return
      */
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
-
+        return new ArrayList<>();
     }
 }
