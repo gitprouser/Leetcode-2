@@ -6,14 +6,17 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * Created by Edward on 24/07/2017.
+ * Project Name : Leetcode
+ * Package Name : leetcode
+ * File Name : BinaryTreeLevelOrderTreaversalII
+ * Creator : Edward
+ * Date : Sep, 2017
+ * Description : 107. Binary Tree Level Order Traversal II  (102 follow up)
  */
 public class BinaryTreeLevelOrderTraversalII {
 
     /**
-     * 107. Binary Tree Level Order Traversal II  (102 follow up)
-     * Given a binary tree, return the bottom-up level order traversal of its nodes' values. (ie, from left to right, level by level from leaf to root).
-
+     *
      For example:
      Given binary tree [3,9,20,null,null,15,7],
           3
@@ -26,8 +29,10 @@ public class BinaryTreeLevelOrderTraversalII {
      [9,20],
      [3]
      ]
-     time : O(n);
-     space : O(n);
+
+     time : O(n)
+     space : O(n)
+
      * @param root
      * @return
      */
